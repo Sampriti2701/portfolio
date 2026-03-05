@@ -1,0 +1,4 @@
+/* App level css managed via index.css and component modules */
+.app {
+  width: 100%;
+}

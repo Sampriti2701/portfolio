@@ -1,0 +1,89 @@
+.certifications-section {
+    padding: 6rem 0;
+    background-color: var(--bg-primary);
+}
+
+.cert-achieve-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+}
+
+@media (min-width: 992px) {
+    .cert-achieve-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.certifications-list h3,
+.achievements-list h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+}
+
+.heading-icon {
+    color: var(--accent-primary);
+}
+
+.items-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.cert-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.cert-item:hover {
+    transform: translateX(10px);
+    border-color: var(--accent-primary);
+}
+
+.cert-icon-wrap {
+    background-color: var(--accent-secondary);
+    color: var(--accent-primary);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.dark .cert-icon-wrap {
+    background-color: rgba(150, 123, 182, 0.2);
+}
+
+.achievement-icon-wrap {
+    color: #f59e0b;
+    /* Golden star for achievements */
+    background-color: rgba(245, 158, 11, 0.1);
+}
+
+.cert-details h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.3rem;
+    line-height: 1.4;
+}
+
+.cert-issuer {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
