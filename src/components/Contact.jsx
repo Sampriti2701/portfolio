@@ -16,7 +16,7 @@ const Contact = () => {
         const data = new FormData(form);
         
         try {
-            const response = await fetch("https://formspree.io/f/mnqkzpnp", { // Placeholder Formspree ID
+            const response = await fetch("https://formspree.io/f/mnqkzpnp", {
                 method: "POST",
                 body: data,
                 headers: {
@@ -24,14 +24,18 @@ const Contact = () => {
                 }
             });
 
+            const result = await response.json();
+
             if (response.ok) {
                 setFormState('success');
                 form.reset();
                 setTimeout(() => setFormState('idle'), 5000);
             } else {
+                console.error("Formspree Error:", result);
                 setFormState('error');
             }
         } catch (error) {
+            console.error("Submission Error:", error);
             setFormState('error');
         }
     };
