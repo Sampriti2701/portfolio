@@ -13,9 +13,14 @@ import CustomCursor from './components/CustomCursor'
 
 function App() {
   const [isDark, setIsDark] = useState(() => {
-    const saved = localStorage.getItem('theme');
-    if (saved) return saved === 'dark';
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    try {
+      const saved = localStorage.getItem('theme');
+      if (saved) return saved === 'dark';
+      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    } catch (e) {
+      console.warn("Theme initialization failed, defaulting to light mode", e);
+      return false;
+    }
   });
 
   useEffect(() => {
