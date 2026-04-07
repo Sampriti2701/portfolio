@@ -9,12 +9,14 @@
     align-items: center;
     gap: 1.5rem;
     padding: 1rem 0;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .projects-carousel {
     overflow-x: auto;
     scroll-behavior: smooth;
-    padding: 2rem 0.5rem;
+    padding: 2.5rem 0.5rem;
     scrollbar-width: none;
     -ms-overflow-style: none;
     width: 100%;
@@ -26,7 +28,7 @@
 
 .projects-grid-horizontal {
     display: flex;
-    gap: 2rem;
+    gap: 2.5rem;
     min-width: max-content;
 }
 
@@ -219,26 +221,50 @@
     box-shadow: 0 10px 25px rgba(150, 123, 182, 0.3);
 }
 
-@media (max-width: 768px) {
+/* Mobile & Tablet Overhaul */
+@media (max-width: 991px) {
     .projects-section {
-        padding: 4rem 0;
+        padding: 4rem 1.5rem;
     }
     
+    /* Hide navigation buttons on mobile/tablet to give cards full space */
     .carousel-btn {
-        display: none;
+        display: none !important;
     }
     
+    .projects-carousel {
+        overflow-x: hidden; /* Force vertical only */
+        padding: 0;
+    }
+
+    .projects-grid-horizontal {
+        flex-direction: column;
+        align-items: center;
+        min-width: 100%;
+        gap: 3rem;
+    }
+
+    .project-card {
+        width: 100%;
+        max-width: 450px; /* Center-aligned, spacious card */
+        margin: 0 auto;
+    }
+
     .carousel-wrapper {
         gap: 0;
     }
 
-    .project-card {
-        width: 320px;
+    .project-content {
+        padding: 1.5rem;
     }
 }
 
 @media (max-width: 480px) {
     .project-card {
-        width: 280px;
+        max-width: 100%;
+    }
+    
+    .project-header h3 {
+        font-size: 1.2rem;
     }
 }
