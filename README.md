@@ -1,16 +1,28 @@
-# React + Vite
+# Sampriti Ghosh - Full Stack Developer & ML Engineer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A premium, interactive portfolio built with React and Vite, showcasing my journey as a 2025 Graduate focused on Full Stack Development and Machine Learning.
 
-Currently, two official plugins are available:
+## 🚀 Key Features
+- **3D Glassmorphic Cards**: Project highlights with interactive mouse-following tilt effects.
+- **Infinite Tech Marquee**: Smooth, horizontally scrolling marquee featuring core technologies.
+- **Custom Interactive Cursor**: A uniquely themed cursor that reacts tactilely to clicks.
+- **Smart Navigation**: A scroll-aware navbar that highlights active sections.
+- **Theme Persistence**: Fully integrated Dark/Light mode that remembers your preference.
+- **Live Feedback**: Functional contact form with Formspree integration.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Tech Stack
+- **Frontend**: React, Vite, Framer Motion (Animations), Lucide-React (Icons)
+- **Styling**: Modern CSS3 with Glassmorphism and Backdrop Filters.
+- **Deployment**: Automatic CI/CD via GitHub Actions.
 
-## React Compiler
+## 📁 Projects Featured
+- **Chat with Multiple PDFs**: LLM-powered application using LangChain & Gemini.
+- **SmartRide**: Full-stack ride booking platform with real-time updates.
+- **Log Classification**: ML system for automated log analysis.
+- **Potato Disease Classification**: Deep Learning model with high-accuracy detection.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🌐 Live Demo
+Experience the portfolio live at: [https://sampriti2701.github.io/portfolio/](https://sampriti2701.github.io/portfolio/)
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+© 2025 Sampriti Ghosh. All rights reserved.
