@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -41,12 +40,7 @@ function App() {
     <>
       <CustomCursor />
       <SocialSidebar />
-      <motion.div 
-        className="app"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
+      <div className="app-container">
         <Navbar isDark={isDark} toggleTheme={toggleTheme} />
         <Hero />
         <About />
@@ -55,7 +49,7 @@ function App() {
         <Certifications />
         <Contact />
         <Footer />
-      </motion.div>
+      </div>
     </>
   )
 }
