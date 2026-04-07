@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sampriti Ghosh – Full Stack Developer (2025 Graduate)</title>
+    <script>
+      // Emergency Error Logger to catch production crashes
+      window.onerror = function(msg, url, lineNo, columnNo, error) {
+        var message = [
+          'Message: ' + msg,
+          'URL: ' + url,
+          'Line: ' + lineNo,
+          'Column: ' + columnNo,
+          'Error object: ' + JSON.stringify(error)
+        ].join('\n');
+        
+        // Create a small visible alert at the top of the page if it fails to load
+        var div = document.createElement('div');
+        div.style.position = 'fixed';
+        div.style.top = '0';
+        div.style.left = '0';
+        div.style.width = '100%';
+        div.style.background = 'red';
+        div.style.color = 'white';
+        div.style.padding = '10px';
+        div.style.zIndex = '9999';
+        div.style.fontSize = '12px';
+        div.style.fontFamily = 'monospace';
+        div.innerText = 'App Crash Detected: ' + msg + '\nCheck Console for details.';
+        document.body.appendChild(div);
+        return false;
+      };
+    </script>
+    <script type="module" crossorigin src="./assets/index-xvPpDNcW.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-D4EntghB.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
