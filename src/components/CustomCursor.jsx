@@ -4,6 +4,7 @@ import './CustomCursor.css';
 
 const CustomCursor = () => {
     const [isClicking, setIsClicking] = useState(false);
+    const [isHovering, setIsHovering] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
     const cursorX = useSpring(0, { damping: 20, stiffness: 300 });
     const cursorY = useSpring(0, { damping: 20, stiffness: 300 });
