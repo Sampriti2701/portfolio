@@ -2,30 +2,32 @@
 
 :root {
   /* Light Theme (Lavender & White) */
-  --bg-primary: #ffffff;
-  --bg-secondary: #fdfcff;
-  --text-primary: #1a1a2e;
-  --text-secondary: #4a4a68;
-  --accent-primary: #967bb6; /* Deep Lavender */
-  --accent-secondary: #e6e6fa; /* Lavender */
-  --accent-hover: #b39ddb;
-  --border-color: #eaeaea;
-  --card-bg: #ffffff;
-  --card-shadow: 0 4px 6px -1px rgba(150, 123, 182, 0.1), 0 2px 4px -1px rgba(150, 123, 182, 0.06);
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8F7FF;
+  --text-primary: #2D2D44;
+  --text-secondary: #5A5A75;
+  --accent-primary: #967BB6; /* Deep Lavender */
+  --accent-secondary: #E6E6FA; /* Lavender */
+  --accent-hover: #7B61A3;
+  --border-color: #E0E0EF;
+  --card-bg: #FFFFFF;
+  --card-shadow: 0 10px 30px rgba(150, 123, 182, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.8);
 }
 
 .dark {
-  /* Dark Theme */
-  --bg-primary: #0f0f13;
-  --bg-secondary: #1a1a24;
-  --text-primary: #e6e6fa;
-  --text-secondary: #a0a0b8;
-  --accent-primary: #b39ddb; 
-  --accent-secondary: #4a3b69; 
-  --accent-hover: #d1c4e9;
-  --border-color: #2a2a35;
-  --card-bg: #1c1c28;
-  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  /* Dark Theme (Keeping some lavender vibes) */
+  --bg-primary: #0F0F13;
+  --bg-secondary: #161620;
+  --text-primary: #E6E6FA;
+  --text-secondary: #A0A0B8;
+  --accent-primary: #B39DDB; 
+  --accent-secondary: #2D2D44; 
+  --accent-hover: #D1C4E9;
+  --border-color: #2A2A35;
+  --card-bg: #1C1C28;
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  --glass-bg: rgba(15, 15, 19, 0.8);
 }
 
 * {

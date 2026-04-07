@@ -82,6 +82,23 @@
     line-height: 1.4;
 }
 
+.cert-link {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.cert-link:hover {
+    color: var(--accent-primary);
+}
+
+.inline-icon {
+    opacity: 0.7;
+}
+
 .cert-issuer {
     font-size: 0.9rem;
     color: var(--text-secondary);

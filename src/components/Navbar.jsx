@@ -6,6 +6,7 @@ import './Navbar.css';
 const Navbar = ({ isDark, toggleTheme }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,16 +14,36 @@ const Navbar = ({ isDark, toggleTheme }) => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    
+    // Intersection Observer for active section detection
+    const sections = ['home', 'about', 'skills', 'projects', 'certifications', 'contact'];
+    const observers = sections.map(section => {
+      const el = document.getElementById(section);
+      if (!el) return null;
+      
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          setActiveSection(section);
+        }
+      }, { threshold: 0.5 });
+      
+      observer.observe(el);
+      return observer;
+    });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      observers.forEach(obs => obs?.disconnect());
+    };
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Certifications', href: '#certifications' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', id: 'home' },
+    { name: 'About', id: 'about' },
+    { name: 'Skills', id: 'skills' },
+    { name: 'Projects', id: 'projects' },
+    { name: 'Certifications', id: 'certifications' },
+    { name: 'Contact', id: 'contact' },
   ];
 
   return (
@@ -39,7 +60,11 @@ const Navbar = ({ isDark, toggleTheme }) => {
 
         <div className="desktop-menu">
           {navLinks.map((link) => (
-            <a key={link.name} href={link.href} className="nav-link">
+            <a 
+              key={link.name} 
+              href={`#${link.id}`} 
+              className={`nav-link ${activeSection === link.id ? 'active' : ''}`}
+            >
               {link.name}
             </a>
           ))}
@@ -73,8 +98,8 @@ const Navbar = ({ isDark, toggleTheme }) => {
             {navLinks.map((link) => (
               <a
                 key={link.name}
-                href={link.href}
-                className="mobile-nav-link"
+                href={`#${link.id}`}
+                className={`mobile-nav-link ${activeSection === link.id ? 'active' : ''}`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.name}

@@ -1,9 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, Send } from 'lucide-react';
+import { Mail, Github, Linkedin, Send, CheckCircle } from 'lucide-react';
+import { useMagnetic } from '../hooks/useMagnetic';
 import './Contact.css';
 
 const Contact = () => {
+    const [formState, setFormState] = useState('idle'); // idle, sending, success, error
+    const magneticBtn = useMagnetic(0.3);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setFormState('sending');
+        
+        const form = e.target;
+        const data = new FormData(form);
+        
+        try {
+            const response = await fetch("https://formspree.io/f/mnqkzpnp", { // Placeholder Formspree ID
+                method: "POST",
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                setFormState('success');
+                form.reset();
+                setTimeout(() => setFormState('idle'), 5000);
+            } else {
+                setFormState('error');
+            }
+        } catch (error) {
+            setFormState('error');
+        }
+    };
+
     return (
         <section id="contact" className="contact-section">
             <div className="container">
@@ -48,11 +80,11 @@ const Contact = () => {
                                 </div>
                             </a>
 
-                            <a href="#" target="_blank" rel="noopener noreferrer" className="contact-item">
+                            <a href="https://www.linkedin.com/in/sampriti-g-3657663aa" target="_blank" rel="noopener noreferrer" className="contact-item">
                                 <div className="contact-icon"><Linkedin size={20} /></div>
                                 <div>
                                     <h4>LinkedIn</h4>
-                                    <span>/in/sampritighosh</span> {/* Assuming a standard URL structure, user can update */}
+                                    <span>/sampriti-g-3657663aa</span>
                                 </div>
                             </a>
                         </div>
@@ -65,23 +97,47 @@ const Contact = () => {
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.6, delay: 0.2 }}
                     >
-                        <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
-                            <div className="form-group">
-                                <label htmlFor="name">Name</label>
-                                <input type="text" id="name" placeholder="John Doe" required />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="email">Email</label>
-                                <input type="email" id="email" placeholder="john@example.com" required />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="message">Message</label>
-                                <textarea id="message" rows="5" placeholder="Your message..." required></textarea>
-                            </div>
-                            <button type="submit" className="btn btn-primary submit-btn">
-                                Send Message <Send size={18} />
-                            </button>
-                        </form>
+                        {formState === 'success' ? (
+                            <motion.div 
+                                className="success-message"
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                            >
+                                <CheckCircle size={60} className="success-icon" />
+                                <h3>Message Sent!</h3>
+                                <p>Thank you for reaching out. I'll get back to you very soon.</p>
+                                <button className="btn btn-outline" onClick={() => setFormState('idle')}>Send Another</button>
+                            </motion.div>
+                        ) : (
+                            <form className="contact-form" onSubmit={handleSubmit}>
+                                <div className="form-group">
+                                    <label htmlFor="name">Name</label>
+                                    <input type="text" id="name" name="name" placeholder="John Doe" required />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="email">Email</label>
+                                    <input type="email" id="email" name="email" placeholder="john@example.com" required />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="message">Message</label>
+                                    <textarea id="message" name="message" rows="5" placeholder="Your message..." required></textarea>
+                                </div>
+                                <motion.button 
+                                    type="submit" 
+                                    className={`btn btn-primary submit-btn ${formState === 'sending' ? 'loading' : ''}`}
+                                    disabled={formState === 'sending'}
+                                    ref={magneticBtn.ref}
+                                    animate={{ x: magneticBtn.x, y: magneticBtn.y }}
+                                >
+                                    {formState === 'sending' ? 'Sending...' : (
+                                        <>Send Message <Send size={18} /></>
+                                    )}
+                                </motion.button>
+                                {formState === 'error' && (
+                                    <p className="error-message">Form submission failed. Please verify your Formspree ID or try again later.</p>
+                                )}
+                            </form>
+                        )}
                     </motion.div>
                 </div>
             </div>
