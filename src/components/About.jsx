@@ -7,6 +7,8 @@ import './About.css';
 // Import assets
 import educationImg from '../assets/about/education_about.png';
 import dsAlgoImg from '../assets/about/ds_algo_about.png';
+import fullstackImg from '../assets/about/fullstack_about.jpg';
+import mlImg from '../assets/about/ml_about.jpg';
 
 const PillarCard = ({ icon: Icon, title, subtitle, description, image, delay, theme }) => {
     const magnetic = useMagnetic(0.15);
@@ -90,6 +92,7 @@ const About = () => {
                             title="Machine Learning" 
                             subtitle="AI & Intelligence" 
                             description="Expertise in Deep Learning, NLP, and Predictive Modeling. Passionate about LLMs and Data Science."
+                            image={mlImg}
                             theme="pillar-cyan"
                             delay={0.2}
                         />
@@ -98,6 +101,7 @@ const About = () => {
                             title="Full Stack Dev" 
                             subtitle="Scalable Web Apps" 
                             description="Proficient in React, Node.js, and FastAPI. Experience building robust, high-performance web systems."
+                            image={fullstackImg}
                             theme="pillar-blue"
                             delay={0.3}
                         />
