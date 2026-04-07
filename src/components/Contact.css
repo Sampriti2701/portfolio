@@ -166,3 +166,17 @@
     margin-top: 1rem;
     text-align: center;
 }
+
+@media (max-width: 768px) {
+    .contact-section {
+        padding: 4rem 0;
+    }
+
+    .contact-info h3 {
+        font-size: 1.6rem;
+    }
+
+    .contact-form-container {
+        padding: 1.5rem;
+    }
+}

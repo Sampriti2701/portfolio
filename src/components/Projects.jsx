@@ -11,6 +11,14 @@ const ProjectCard = ({ project, index }) => {
     const rotateY = useTransform(x, [-100, 100], [-15, 15]);
 
     function handleMouse(event) {
+        // Disable tilt on touch devices
+        const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+        if (isTouchDevice) {
+            x.set(0);
+            y.set(0);
+            return;
+        }
+
         const rect = event.currentTarget.getBoundingClientRect();
         const mouseX = event.clientX - rect.left;
         const mouseY = event.clientY - rect.top;

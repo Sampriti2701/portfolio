@@ -129,6 +129,39 @@
     line-height: 1.8;
 }
 
+@media (max-width: 768px) {
+    .hero-section {
+        padding-top: 60px;
+        min-height: auto;
+        padding-bottom: 4rem;
+    }
+
+    .blob-1 {
+        width: 60vw;
+        height: 60vw;
+        opacity: 0.2;
+    }
+
+    .blob-2 {
+        width: 50vw;
+        height: 50vw;
+        opacity: 0.2;
+    }
+
+    .hero-name {
+        font-size: 2.8rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .scroll-indicator {
+        display: none; /* Hide scroll mouse on mobile */
+    }
+}
+
 .hero-buttons {
     display: flex;
     flex-wrap: wrap;

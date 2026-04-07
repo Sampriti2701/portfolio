@@ -8,6 +8,10 @@ export const useMagnetic = (strength = 0.5) => {
     const [position, setPosition] = useState({ x: 0, y: 0 });
 
     useEffect(() => {
+        // Disable magnetic effect on touch devices
+        const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+        if (isTouchDevice) return;
+
         const handleMouseMove = (e) => {
             if (!ref.current) return;
             

@@ -219,8 +219,26 @@
     box-shadow: 0 10px 25px rgba(150, 123, 182, 0.3);
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
+    .projects-section {
+        padding: 4rem 0;
+    }
+    
+    .carousel-btn {
+        display: none;
+    }
+    
+    .carousel-wrapper {
+        gap: 0;
+    }
+
     .project-card {
-        width: 300px;
+        width: 320px;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-card {
+        width: 280px;
     }
 }

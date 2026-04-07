@@ -3,12 +3,20 @@ import { motion, useSpring } from 'framer-motion';
 import './CustomCursor.css';
 
 const CustomCursor = () => {
-    const [isHovering, setIsHovering] = useState(false);
     const [isClicking, setIsClicking] = useState(false);
+    const [isVisible, setIsVisible] = useState(false);
     const cursorX = useSpring(0, { damping: 20, stiffness: 300 });
     const cursorY = useSpring(0, { damping: 20, stiffness: 300 });
 
     useEffect(() => {
+        // Only show custom cursor on devices with a mouse
+        const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+        if (isTouchDevice) {
+            setIsVisible(false);
+            return;
+        }
+        setIsVisible(true);
+
         const moveCursor = (e) => {
             cursorX.set(e.clientX);
             cursorY.set(e.clientY);
@@ -42,6 +50,8 @@ const CustomCursor = () => {
             clearInterval(interval);
         };
     }, []);
+
+    if (!isVisible) return null;
 
     return (
         <>

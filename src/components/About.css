@@ -131,8 +131,12 @@
     color: var(--text-secondary);
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
     .about-cards {
         grid-template-columns: 1fr;
+    }
+    
+    .about-section {
+        padding: 4rem 0;
     }
 }
