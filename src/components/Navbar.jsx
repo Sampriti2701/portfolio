@@ -46,6 +46,14 @@ const Navbar = ({ isDark, toggleTheme }) => {
     { name: 'Contact', id: 'contact' },
   ];
 
+  const scrollToSection = (id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    setMobileMenuOpen(false);
+  };
+
   return (
     <motion.nav
       className={`navbar ${isScrolled ? 'scrolled' : ''}`}
@@ -60,13 +68,13 @@ const Navbar = ({ isDark, toggleTheme }) => {
 
         <div className="desktop-menu">
           {navLinks.map((link) => (
-            <a 
-              key={link.name} 
-              href={`#${link.id}`} 
+            <button
+              key={link.name}
+              onClick={() => scrollToSection(link.id)}
               className={`nav-link ${activeSection === link.id ? 'active' : ''}`}
             >
               {link.name}
-            </a>
+            </button>
           ))}
           <button onClick={toggleTheme} className="theme-toggle" aria-label="Toggle Theme">
             {isDark ? <Sun size={20} /> : <Moon size={20} />}
@@ -96,14 +104,13 @@ const Navbar = ({ isDark, toggleTheme }) => {
             transition={{ duration: 0.3 }}
           >
             {navLinks.map((link) => (
-              <a
+              <button
                 key={link.name}
-                href={`#${link.id}`}
+                onClick={() => scrollToSection(link.id)}
                 className={`mobile-nav-link ${activeSection === link.id ? 'active' : ''}`}
-                onClick={() => setMobileMenuOpen(false)}
               >
                 {link.name}
-              </a>
+              </button>
             ))}
           </motion.div>
         )}
