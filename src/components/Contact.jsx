@@ -8,12 +8,20 @@ const Contact = () => {
     const [formState, setFormState] = useState('idle'); // idle, sending, success, error
     const magneticBtn = useMagnetic(0.3);
 
+    const [capturedData, setCapturedData] = useState(null);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setFormState('sending');
         
         const form = e.target;
         const data = new FormData(form);
+
+        // Capture form data for mailto fallback
+        const name = data.get('name');
+        const email = data.get('email');
+        const message = data.get('message');
+        setCapturedData({ name, email, message });
         
         try {
             const response = await fetch("https://formspree.io/f/mnqkzpnp", {
@@ -38,6 +46,14 @@ const Contact = () => {
             console.error("Submission Error:", error);
             setFormState('error');
         }
+    };
+
+    const getMailtoLink = () => {
+        if (!capturedData) return `mailto:sampritighosh2701@gmail.com`;
+        const { name, email, message } = capturedData;
+        const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
+        const body = encodeURIComponent(`From: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+        return `mailto:sampritighosh2701@gmail.com?subject=${subject}&body=${body}`;
     };
 
     return (
@@ -138,7 +154,12 @@ const Contact = () => {
                                     )}
                                 </motion.button>
                                 {formState === 'error' && (
-                                    <p className="error-message">Form submission failed. Please verify your Formspree ID or try again later.</p>
+                                    <div className="error-fallback">
+                                        <p className="error-message">Oops! Something went wrong. Send directly via email instead:</p>
+                                        <a href={getMailtoLink()} className="btn btn-outline mailto-btn">
+                                            <Mail size={16} /> Send via Email
+                                        </a>
+                                    </div>
                                 )}
                             </form>
                         )}
