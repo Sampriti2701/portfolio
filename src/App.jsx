@@ -17,14 +17,6 @@ function App() {
     if (saved) return saved === 'dark';
     return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
   });
-  const [isLoading, setIsLoading] = useState(true)
-
-  // System preference detection on initial load (only if no saved preference)
-  useEffect(() => {
-    // Simulate initial load for animation
-    const timer = setTimeout(() => setIsLoading(false), 500);
-    return () => clearTimeout(timer);
-  }, []);
 
   useEffect(() => {
     if (isDark) {
@@ -44,25 +36,21 @@ function App() {
     <>
       <CustomCursor />
       <SocialSidebar />
-      <AnimatePresence>
-        {!isLoading && (
-          <motion.div 
-            className="app"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <Navbar isDark={isDark} toggleTheme={toggleTheme} />
-            <Hero />
-            <About />
-            <Skills />
-            <Projects />
-            <Certifications />
-            <Contact />
-            <Footer />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <motion.div 
+        className="app"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        <Navbar isDark={isDark} toggleTheme={toggleTheme} />
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Certifications />
+        <Contact />
+        <Footer />
+      </motion.div>
     </>
   )
 }
